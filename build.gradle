@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+//bootRepackage {
+//    enabled = true
+//}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'me.dryrain.hwptool1.Main'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+group 'me.dryrain'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+
+    implementation "kr.dogfoot:hwplib:1.0.2"
+}
