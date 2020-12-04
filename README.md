@@ -1,7 +1,7 @@
 # HwpTool1
 HWP text replace tool.
 
-CSV를 읽어 지정한 텍스트를 대치해 다른 이름으로 저장합니다.
+CSV를 읽어 지정한 텍스트를 대치해 다른 이름으로 저장합니다. (한글 메일 머지랑 동일한 기능)
 
 ## 실행 방법
 `java -jar -Dfile.encoding=UTF-8 hwpTool1-1.0-SNAPSHOT.jar`
