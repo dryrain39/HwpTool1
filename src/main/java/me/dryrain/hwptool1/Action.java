@@ -32,9 +32,10 @@ public class Action {
             head = csvData.get(0);
         }
 
-        HWPFile hwpFile = HWPReader.fromFile(template_path);
-        if (hwpFile != null) {
-            for (int r = 1; r < csvData.size(); r++) {
+
+        for (int r = 1; r < csvData.size(); r++) {
+            HWPFile hwpFile = HWPReader.fromFile(template_path);
+            if (hwpFile != null) {
                 for (int c = 1; c < csvData.get(r).length; c++) {
                     ArrayList<Paragraph> paragraphs = getParagraph(hwpFile);
                     for (Paragraph paragraph : paragraphs) {
@@ -42,13 +43,14 @@ public class Action {
                     }
                 }
                 System.out.println("Writing " + output_path + csvData.get(r)[0] + ".hwp");
-                HWPWriter.toFile(hwpFile, output_path +  csvData.get(r)[0] + ".hwp");
+                HWPWriter.toFile(hwpFile, output_path + csvData.get(r)[0] + ".hwp");
                 try {
                     fw.write("HAction.GetDefault(\"InsertFile\", HParameterSet.HInsertFile.HSet); with (HParameterSet.HInsertFile) { FileName = \"" + (path + csvData.get(r)[0]).replace("\\", "\\\\") + ".hwp\"; KeepSection = 1; KeepCharshape = 0; KeepParashape = 0; KeepStyle = 0; } HAction.Execute(\"InsertFile\", HParameterSet.HInsertFile.HSet);\n");
                 } catch (Exception ignored) {
                 }
             }
         }
+
 
         try {
             fw.close();

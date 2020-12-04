@@ -30,7 +30,6 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
-    compile group: 'org.openjfx', name: 'javafx', version: '12', ext: 'pom'
+    implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
     implementation "kr.dogfoot:hwplib:1.0.2"
 }
