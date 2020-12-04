@@ -100,6 +100,7 @@ public class HWPTool {
         return paragraphs;
     }
 
+
     public static void copyPage(HWPFile hwpFile, int section_idx) {
         int blankSection_idx = hwpFile.getBodyText().getSectionList().size();
         hwpFile.getBodyText().addNewSection();
